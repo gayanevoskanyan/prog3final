@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
     <table>
         <tr id="first">
@@ -18,12 +20,12 @@
             <td class="alice">Color</td>
             <td class="alice">Basic Info</td>
             <td class="alice">Energy</td>
-            <td class="alice">Multiply info</td>
+            <td class="alice">Multiply Info</td>
             <td class="alice">Energy Obtainment</td>
             <td class="alice">Special Characteristic</td>
         </tr>
         <tr class="second">
-            <td id="gray" ></td>
+            <td id="gray"></td>
             <td>
                 <p>Gray</p>
             </td>
@@ -44,10 +46,10 @@
         <tr class="third">
             <td id="green"></td>
             <td>
-                <p>green</p>
+                <p>Green</p>
             </td>
             <td>
-                <p>It's just a Grass.</p>
+                <p>It's just a Grass</p>
             </td>
             <td>
                 <p>-</p>
@@ -59,13 +61,13 @@
                 <p>No energy</p>
             </td>
             <td>
-                <p>Bazmanum e</p>
+                <p>Multiplies</p>
             </td>
         </tr>
         <tr class="second">
-            <td id="yellow" ></td>
+            <td id="yellow"></td>
             <td>
-                <p>yellow</p>
+                <p>Yellow</p>
             </td>
             <td>
                 <p>Vegan</p>
@@ -80,13 +82,13 @@
                 <p>Eating Grass</p>
             </td>
             <td>
-                <p>qayluma datark vandaknerov henc handipuma xot, utuma</p>
+                <p>Walks in empty cages and eats grass</p>
             </td>
         </tr>
         <tr class="third">
             <td id="red"></td>
             <td>
-                <p>red</p>
+                <p>Red</p>
             </td>
             <td>
                 <p>Wild Animal</p>
@@ -98,19 +100,19 @@
                 <p>Multiplies after energy reaches 15+</p>
             </td>
             <td>
-                <p>utuma xotakernerin</p>
+                <p>Eats grass eaters</p>
             </td>
             <td>
-                <p>qayluma datarknerov, utuma xotakernerin</p>
+                <p>Walks in empty cages and eats grass eaters</p>
             </td>
         </tr>
         <tr class="forth">
-            <td id="bacgreen" ></td>
+            <td id="bacgreen"></td>
             <td>
-                <p>bac kanach</p>
+                <p>Light-green</p>
             </td>
             <td>
-                <p>xotakernerin u gazaniknerin utoxner</p>
+                <p>Eat Wild animals and Vegans</p>
             </td>
             <td>
                 <p>9</p>
@@ -122,10 +124,10 @@
         <tr class="fifth">
             <td id="blue"></td>
             <td>
-                <p>blue</p>
+                <p>Blue</p>
             </td>
             <td>
-                <p>just a water</p>
+                <p>Just a water</p>
             </td>
             <td>
                 <p>-</p>
@@ -134,7 +136,7 @@
                 <p>Can multiply once in 3 frames</p>
             </td>
             <td>
-                <p>not energy</p>
+                <p>No energy</p>
             </td>
             <td>
                 <p>Multiplies after energy reaches 3+</p>
@@ -143,10 +145,10 @@
         <tr class="sixth">
             <td id="purpule"></td>
             <td>
-                <p>purpule</p>
+                <p>Purpule</p>
             </td>
             <td>
-                <p>qayluma jri mijov</p>
+                <p>Walks through the water</p>
             </td>
             <td>
                 <p>8</p>
@@ -155,13 +157,68 @@
                 <p>Can multiply once in 9 frames</p>
             </td>
             <td>
-                <p>jri mijov sharjvuma</p>
+                <p>No energy</p>
             </td>
             <td>
                 <p>Multiplies after energy reaches 9+</p>
             </td>
-        </tr> 
+        </tr>
     </table>
-    
+    <hr>
+    <div class="tools">
+        <h1 style="color:rgb(171, 39, 189)">Events</h1>
+        <ul>
+            <li>
+                <button onclick="kill()">Kill them all</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="addGrass()">Add grass</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="addGrassEater()">Add grass eater</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="addGazanik()">Add gazanik</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="addMard()">Add mard</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="addJur()">Add jur</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="addDzuk()">Add dzuk</button>
+            </li>
+        </ul>
+        <br>
+    </div>
+    <div class="seasons">
+        <h1 style="color:rgb(171, 39, 189)">Weathers</h1>
+        <ul>
+            <li>
+                <button onclick="garun()">Garun</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="amar()">Amar</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="ashun()">Ashun</button>
+            </li>
+            <br>
+            <li>
+                <button onclick="dzmer()">Dzmer</button>
+            </li>
+        </ul>
+    </div>
+    <br>
 </body>
+
 </html>

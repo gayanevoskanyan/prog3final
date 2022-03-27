@@ -1,14 +1,13 @@
 let socket = io();
-let side = 10;
+let side = 15;
 
 function setup() {
-  socket.on('send matrix', matrix);
   createCanvas(50 * side + 1,50 * side + 1);
   background("grey");
-  frameRate(1000);
+  // frameRate(1000);
 }
 
-function nkar() {
+function nkar(matrix) {
   for (let x = 0; x < matrix.length; x++) {
     for (let y = 0; y < matrix[x].length; y++) {
       let obj = matrix[x][y];
@@ -33,6 +32,7 @@ function nkar() {
 }
 socket.on('send matrix', nkar);
 
+
 function kill() {
   socket.emit("Kill");
 }
@@ -54,3 +54,5 @@ function addJur() {
 function addDzuk() {
   socket.emit("add Dzuk");
 }
+
+button.onclick = addGazanik;
