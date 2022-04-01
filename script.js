@@ -37,22 +37,20 @@ function kill() {
   socket.emit("Kill");
 }
 function addGrass() {
-  socket.emit("add Grass");
+  socket.emit("Add Grass");
 }
 function addGrassEater() {
-  socket.emit("add GrassEater");
+  socket.emit("Add GrassEater");
 }
 function addGazanik() {
-  socket.emit("add Gazanik");
+  socket.emit("Add Gazanik");
 }
 function addMard() {
-  socket.emit("add Mard");
+  socket.emit("Add Mard");
 }
 function addJur() {
-  socket.emit("add Jur");
+  socket.emit("Add Jur");
 }
 function addDzuk() {
-  socket.emit("add Dzuk");
+  socket.emit("Add Dzuk");
 }
-
-button.onclick = addGazanik;

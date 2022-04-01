@@ -1,224 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <table>
-        <tr id="first">
-            <td class="alice"></td>
-            <td class="alice">Color</td>
-            <td class="alice">Basic Info</td>
-            <td class="alice">Energy</td>
-            <td class="alice">Multiply Info</td>
-            <td class="alice">Energy Obtainment</td>
-            <td class="alice">Special Characteristic</td>
-        </tr>
-        <tr class="second">
-            <td id="gray"></td>
-            <td>
-                <p>Gray</p>
-            </td>
-            <td>
-                <p>Just an empty space</p>
-            </td>
-            <td>
-                <p>-</p>
-            </td>
-            <td>No multiply</td>
-            <td>
-                <p>No energy</p>
-            </td>
-            <td>
-                <p>No special characteristics</p>
-            </td>
-        </tr>
-        <tr class="third">
-            <td id="green"></td>
-            <td>
-                <p>Green</p>
-            </td>
-            <td>
-                <p>It's just a Grass</p>
-            </td>
-            <td>
-                <p>-</p>
-            </td>
-            <td>
-                <p>Can multiply once in 8 frames</p>
-            </td>
-            <td>
-                <p>No energy</p>
-            </td>
-            <td>
-                <p>Multiplies</p>
-            </td>
-        </tr>
-        <tr class="second">
-            <td id="yellow"></td>
-            <td>
-                <p>Yellow</p>
-            </td>
-            <td>
-                <p>Vegan</p>
-            </td>
-            <td>
-                <p>8</p>
-            </td>
-            <td>
-                <p>Multiplies after energy reaches 9+</p>
-            </td>
-            <td>
-                <p>Eating Grass</p>
-            </td>
-            <td>
-                <p>Walks in empty cages and eats grass</p>
-            </td>
-        </tr>
-        <tr class="third">
-            <td id="red"></td>
-            <td>
-                <p>Red</p>
-            </td>
-            <td>
-                <p>Wild Animal</p>
-            </td>
-            <td>
-                <p>12</p>
-            </td>
-            <td>
-                <p>Multiplies after energy reaches 15+</p>
-            </td>
-            <td>
-                <p>Eats grass eaters</p>
-            </td>
-            <td>
-                <p>Walks in empty cages and eats grass eaters</p>
-            </td>
-        </tr>
-        <tr class="forth">
-            <td id="bacgreen"></td>
-            <td>
-                <p>Light-green</p>
-            </td>
-            <td>
-                <p>Eat Wild animals and Vegans</p>
-            </td>
-            <td>
-                <p>9</p>
-            </td>
-            <td>
-                <p>Multiplies after energy reaches 15+</p>
-            </td>
-        </tr>
-        <tr class="fifth">
-            <td id="blue"></td>
-            <td>
-                <p>Blue</p>
-            </td>
-            <td>
-                <p>Just a water</p>
-            </td>
-            <td>
-                <p>-</p>
-            </td>
-            <td>
-                <p>Can multiply once in 3 frames</p>
-            </td>
-            <td>
-                <p>No energy</p>
-            </td>
-            <td>
-                <p>Multiplies after energy reaches 3+</p>
-            </td>
-        </tr>
-        <tr class="sixth">
-            <td id="purpule"></td>
-            <td>
-                <p>Purpule</p>
-            </td>
-            <td>
-                <p>Walks through the water</p>
-            </td>
-            <td>
-                <p>8</p>
-            </td>
-            <td>
-                <p>Can multiply once in 9 frames</p>
-            </td>
-            <td>
-                <p>No energy</p>
-            </td>
-            <td>
-                <p>Multiplies after energy reaches 9+</p>
-            </td>
-        </tr>
+      <tr id="first">
+        <td class="alice"></td>
+        <td class="alice">Color</td>
+        <td class="alice">Basic Info</td>
+        <td class="alice">Energy</td>
+        <td class="alice">Multiply Info</td>
+        <td class="alice">Energy Obtainment</td>
+        <td class="alice">Special Characteristic</td>
+      </tr>
+      <tr class="second">
+        <td id="gray"></td>
+        <td>
+          <p>Gray</p>
+        </td>
+        <td>
+          <p>Just an empty space</p>
+        </td>
+        <td>
+          <p>-</p>
+        </td>
+        <td>No multiply</td>
+        <td>
+          <p>No energy</p>
+        </td>
+        <td>
+          <p>No special characteristics</p>
+        </td>
+      </tr>
+      <tr class="third">
+        <td id="green"></td>
+        <td>
+          <p>Green</p>
+        </td>
+        <td>
+          <p>It's just a Grass</p>
+        </td>
+        <td>
+          <p>-</p>
+        </td>
+        <td>
+          <p>Can multiply once in 8 frames</p>
+        </td>
+        <td>
+          <p>No energy</p>
+        </td>
+        <td>
+          <p>Multiplies</p>
+        </td>
+      </tr>
+      <tr class="second">
+        <td id="yellow"></td>
+        <td>
+          <p>Yellow</p>
+        </td>
+        <td>
+          <p>Vegan</p>
+        </td>
+        <td>
+          <p>8</p>
+        </td>
+        <td>
+          <p>Multiplies after energy reaches 9+</p>
+        </td>
+        <td>
+          <p>Eating Grass</p>
+        </td>
+        <td>
+          <p>Walks in empty cages and eats grass</p>
+        </td>
+      </tr>
+      <tr class="third">
+        <td id="red"></td>
+        <td>
+          <p>Red</p>
+        </td>
+        <td>
+          <p>Wild Animal</p>
+        </td>
+        <td>
+          <p>12</p>
+        </td>
+        <td>
+          <p>Multiplies after energy reaches 15+</p>
+        </td>
+        <td>
+          <p>Eats grass eaters</p>
+        </td>
+        <td>
+          <p>Walks in empty cages and eats grass eaters</p>
+        </td>
+      </tr>
+      <tr class="forth">
+        <td id="bacgreen"></td>
+        <td>
+          <p>Light-green</p>
+        </td>
+        <td>
+          <p>Eat Wild animals and Vegans</p>
+        </td>
+        <td>
+          <p>9</p>
+        </td>
+        <td>
+          <p>Multiplies after energy reaches 15+</p>
+        </td>
+      </tr>
+      <tr class="fifth">
+        <td id="blue"></td>
+        <td>
+          <p>Blue</p>
+        </td>
+        <td>
+          <p>Just a water</p>
+        </td>
+        <td>
+          <p>-</p>
+        </td>
+        <td>
+          <p>Can multiply once in 3 frames</p>
+        </td>
+        <td>
+          <p>No energy</p>
+        </td>
+        <td>
+          <p>Multiplies after energy reaches 3+</p>
+        </td>
+      </tr>
+      <tr class="sixth">
+        <td id="purpule"></td>
+        <td>
+          <p>Purpule</p>
+        </td>
+        <td>
+          <p>Walks through the water</p>
+        </td>
+        <td>
+          <p>8</p>
+        </td>
+        <td>
+          <p>Can multiply once in 9 frames</p>
+        </td>
+        <td>
+          <p>No energy</p>
+        </td>
+        <td>
+          <p>Multiplies after energy reaches 9+</p>
+        </td>
+      </tr>
     </table>
-    <hr>
+    <hr />
     <div class="tools">
-        <h1 style="color:rgb(171, 39, 189)">Events</h1>
-        <ul>
-            <li>
-                <button onclick="kill()">Kill them all</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="addGrass()">Add grass</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="addGrassEater()">Add grass eater</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="addGazanik()">Add gazanik</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="addMard()">Add mard</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="addJur()">Add jur</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="addDzuk()">Add dzuk</button>
-            </li>
-        </ul>
-        <br>
+      <h1 style="color: rgb(171, 39, 189); margin-bottom: 10px">Events</h1>
+      <ul>
+          <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+            <div style="
+                width: 35px;
+                height: 35px;
+                background-color: rgb(123, 123, 123);
+                margin-right: 15px;
+                border-radius: 7px;
+              "></div>
+            <button onclick="kill()">Kill Them All</button>
+          </li>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(162, 18, 162);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="addGrass()">Add Grass</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(162, 18, 162);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="addGrassEater()">Add Grass Eater</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(162, 18, 162);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="addGazanik()">Add Gazanik</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(162, 18, 162);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="addMard()">Add Mard</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(162, 18, 162);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="addJur()">Add Jur</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(162, 18, 162);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="addDzuk()">Add Dzuk</button>
+        </li>
+      </ul>
+      <br />
     </div>
     <div class="seasons">
-        <h1 style="color:rgb(171, 39, 189)">Weathers</h1>
-        <ul>
-            <li>
-                <button onclick="garun()">Garun</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="amar()">Amar</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="ashun()">Ashun</button>
-            </li>
-            <br>
-            <li>
-                <button onclick="dzmer()">Dzmer</button>
-            </li>
-        </ul>
+      <h1 style="color: rgb(171, 39, 189)">Weathers</h1>
+      <ul>
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(229, 229, 15);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="garun()">Garun</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(229, 229, 15);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="amar()">Amar</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(229, 229, 15);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="ashun()">Ashun</button>
+        </li>
+        <br />
+        <li style="margin-bottom: 10px; display: flex; flex-direction: row">
+          <div
+            style="
+              width: 35px;
+              height: 35px;
+              background-color: rgb(229, 229, 15);
+              margin-right: 15px;
+              border-radius: 7px;
+            "
+          ></div>
+          <button onclick="dzmer()">Dzmer</button>
+        </li>
+      </ul>
     </div>
-    <br>
-</body>
-
+    <br />
+  </body>
 </html>

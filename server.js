@@ -61,11 +61,7 @@ function generator(n, gr, grEat, gazanik, mard, jur, dzuk) {
         }
     }
 }
-generator(60, 30, 40, 60, 20, 30, 40);
 io.sockets.emit('send matrix', matrix);
-
-
-
 
 grassArr = [];
 grassEaterArr = [];
@@ -81,7 +77,8 @@ let Mard = require("./Mard");
 let Jur = require("./Jur");
 let Dzuk = require("./Dzuk");
 
-function createObject(matrix) {
+
+function createObject() {
     for (var y = 0; y < matrix[0].length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[x][y] == 1) {
@@ -136,20 +133,15 @@ function game() {
     }
     io.sockets.emit("send matrix", matrix);
 }
-setInterval(game, 1000);
-
-io.on('connection', function (socket) {
-    createObject(matrix);
-})
+setInterval(game, 100);
 
 function kill() {
-    let grassArr = [];
-    let grassEaterArr = [];
-    let gazanikArr = [];
-    let mardArr = [];
-    let jurArr = [];
-    let dzukArr = [];
-    let shnadzukArr = [];
+    grassArr = [];
+    grassEaterArr = [];
+    gazanikArr = [];
+    mardArr = [];
+    jurArr = [];
+    dzukArr = [];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             matrix[y][x] = 0;
@@ -190,40 +182,65 @@ function addGazanik() {
     }
     io.sockets.emit("send matrix", matrix);
 }
-// function addMard() {
-//     for (var i = 0; i < 7; i++) {
-//         var x = Math.floor(Math.random() * matrix[0].length)
-//         var y = Math.floor(Math.random() * matrix.length)
-//         if (matrix[y][x] == 0) {
-//             matrix[y][x] = 3;
-//             mardArr.push(new Mard(x, y, 3));
-//         }
-//     }
-//     io.sockets.emit("send matrix", matrix);
-// }
-// function addJur() {
-//     for (var i = 0; i < 7; i++) {
-//         var x = Math.floor(Math.random() * matrix[0].length)
-//         var y = Math.floor(Math.random() * matrix.length)
-//         if (matrix[y][x] == 0) {
-//             matrix[y][x] = 4;
-//             jurArr.push(new Jur(x, y, 4));
-//         }
-//     }
-//     io.sockets.emit("send matrix", matrix);
-// }
-// function addDzuk() {
-//     for (var i = 0; i < 7; i++) {
-//         var x = Math.floor(Math.random() * matrix[0].length)
-//         var y = Math.floor(Math.random() * matrix.length)
-//         if (matrix[y][x] == 0) {
-//             matrix[y][x] = 5;
-//             dzukArr.push(new Dzuk(x, y, 5));
-//         }
-//     }
-//     io.sockets.emit("send matrix", matrix);
-// }
+function addMard() {
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3;
+            mardArr.push(new Mard(x, y, 3));
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+function addJur() {
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4;
+            jurArr.push(new Jur(x, y, 4));
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+function addDzuk() {
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5;
+            dzukArr.push(new Dzuk(x, y, 5));
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
 
+io.on('connection', function (socket) {
+  generator(60, 30, 40, 60, 20, 30, 40);
+    createObject();
+    socket.on("Kill", kill);
+    socket.on("Add Grass", addGrass);
+    socket.on("Add Grass Eater", addGrassEater);
+    socket.on("Add Gazanik", addGazanik);
+    socket.on("Add Mard", addMard);
+    socket.on("Add Jur", addJur);
+    socket.on("Add Dzuk", addDzuk);
+})
+
+let statistics = {};
+
+setInterval(function() {
+    statistics.grass = grassArr.length;
+    statistics.grassEater = grassEaterArr.length;
+    statistics.gazanik = gazanikArr.length;
+    statistics.mard = mardArr.length;
+    statistics.jur = jurArr.length;
+    statistics.dzuk = dzukArr.length;
+    fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
+        console.log("send");
+    })
+},1000)
 
 // function weather() {
 //     if (weath == "winter") {
