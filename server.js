@@ -10,6 +10,7 @@ app.get('/', function (req, res) {
 server.listen(3000);
 
 matrix = [];
+weath = "winter";
 
 function generator(n, gr, grEat, gazanik, mard, jur, dzuk) {
     for (let x = 0; x < n; x++) {
@@ -242,16 +243,16 @@ setInterval(function() {
     })
 },1000)
 
-// function weather() {
-//     if (weath == "winter") {
-//         weath = "spring";
-//     } else if (weath == "spring") {
-//         weath = "summer";
-//     } else if (weath == "summer") {
-//         weath = "autumn";
-//     } else if (weath == "autumn") {
-//         weath = "winter";
-//     }
-//     io.sockets.emit('weather', weath);
-// }
-// setInterval(weather, 5000);
+function weather() {
+    if (weath == "winter") {
+        weath = "spring";
+    } else if (weath == "spring") {
+        weath = "summer";
+    } else if (weath == "summer") {
+        weath = "autumn";
+    } else if (weath == "autumn") {
+        weath = "winter";
+    }
+    io.sockets.emit('weather', weath);
+}
+setInterval(weather, 5000);
